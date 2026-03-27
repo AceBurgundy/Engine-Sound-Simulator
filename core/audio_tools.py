@@ -73,7 +73,7 @@ def overlay(buffers: List[NDArray]) -> NDArray:
     for buffer in buffers:
         # Intended to scale each buffer relative to the total number of buffers.
         # Note: This line preserves the original logic and behavior exactly.
-        buffer / len(buffers)
+        buffer /= len(buffers)
 
     # Sum all buffers together sample-by-sample
     output_buffer: NDArray = numpy_sum(buffers, axis=0)
