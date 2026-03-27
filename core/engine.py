@@ -22,6 +22,7 @@ Copyright (c) 2026 AceBurgundy
 
 from numpy import (
     array,
+    ones,
     zeros,
     arange,
     interp,
@@ -323,6 +324,11 @@ class Engine:
         ]
 
         engine_sound: NDArray = audio_tools.overlay(equal_buffers)
+
+        # Simple Low-Pass Filter (Moving Average)
+        # This reduces the "tinny" high-end at high RPMs
+        window_size = 3
+        engine_sound = convolve(engine_sound, ones(window_size)/window_size, mode='same')
 
         return audio_tools.in_playback_format(engine_sound)
 

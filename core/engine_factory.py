@@ -137,6 +137,32 @@ def inline4(wave_sound: NDArray = _fire_sound) -> Engine:
         between_fire_sound=synthesisation.silence(1),
     )
 
+def inline4_crossplane(wave_sound: NDArray = _fire_sound) -> Engine:
+    """
+    Yamaha CP4 Inline-four crossplane configuration.
+    
+    Found in:
+    - Yamaha MT-10 / MT-10 SP (2016+)
+    - Yamaha YZF-R1 / R1M (2009+)
+
+    The 270°-180°-90°-180° firing interval creates the distinct 
+    'growl' and mimics the torque characteristics of a V4.
+    
+    Parameters
+    ----------
+    wave_sound : NDArray
+        The waveform to use for the combustion sound of the engine.
+    """
+    return Engine(
+        idle_rpm=1200,
+        limiter_rpm=12000,
+        strokes=4,
+        cylinders=4,
+        timing=[270, 180, 90, 180],
+        fire_sound=wave_sound,
+        between_fire_sound=synthesisation.silence(1),
+    )
+
 def inline5(wave_sound: NDArray = _fire_sound) -> Engine:
     """
     Inline-five engine configuration.
