@@ -198,7 +198,7 @@ class XSR155(BaseVehicle):
         """
         super().__init__(
             name="Yamaha XSR155",
-            idle_rpm=1400,
+            idle_rpm=1500,
             limiter_rpm=10500,
             strokes=EngineStrokeType.FOUR_STROKE,
             cylinders=1,
